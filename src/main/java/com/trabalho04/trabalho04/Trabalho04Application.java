@@ -7,11 +7,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.stream.LongStream;
 
 @SpringBootApplication
@@ -25,13 +25,13 @@ public class Trabalho04Application {
     CommandLineRunner init(MarcacaoDAO marcacao) {
         return args -> {
             marcacao.deleteAll();
-            LongStream.range(1, 11)
+            LongStream.range(1, 4)
                     .mapToObj(i -> {
                         Marcacao m = new Marcacao();
                         m.setNome("Marcacao " + i);
                         m.setLongitude(i);
                         m.setLatitude(i);
-                        m.setDataInclusao(Calendar.getInstance());
+                        m.setDataInclusao(new Date());
                         return m;
                     })
                     .map(v -> marcacao.save(v))

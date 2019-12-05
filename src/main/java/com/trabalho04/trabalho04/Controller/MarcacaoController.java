@@ -2,13 +2,14 @@ package com.trabalho04.trabalho04.Controller;
 
 import com.trabalho04.trabalho04.DAO.MarcacaoDAO;
 import com.trabalho04.trabalho04.model.Marcacao;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping({"/marcacao"})
+@RequestMapping(value = {"/marcacao"})
 public class MarcacaoController {
 
     private MarcacaoDAO marcacao;
@@ -48,7 +49,7 @@ public class MarcacaoController {
                 }).orElse(ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping(path = {"/{id"})
+    @DeleteMapping(path = {"/{id}"})
     public ResponseEntity<?> delete(@PathVariable int id) {
         return marcacao.findById(id)
                 .map(record -> {

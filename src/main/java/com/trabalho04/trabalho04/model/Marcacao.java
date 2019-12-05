@@ -1,5 +1,6 @@
 package com.trabalho04.trabalho04.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class Marcacao {
     private float latitude;
     private float longitude;
     @Column(name = "dataInclusao")
-    private Calendar dataInclusao;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private Date dataInclusao;
 
 }
